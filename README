@@ -1,0 +1,53 @@
+TableFu
+=================
+
+Gives you a handy set of helpers to do advanced table views
+
+
+Basic usage
+===========
+
+<%= table(@events) %>
+
+Outputs:
+
+<table>
+  <%= render :partial => "events/table_head" %>
+  <%= render :partial => "events/table_row", :collection => @events %>
+</table>
+
+
+<%= table(@events, :class => "list") %>
+
+Outputs:
+
+<table class="list">
+  <%= render :partial => "events/table_head" %>
+  <%= render :partial => "events/table_row", :collection => @events %>
+</table>
+
+
+Advanced usage
+==============
+
+# _table_head.html.erb
+<tr>
+  <%= th :name %>
+  <%= th :description, "Info" %>
+</tr>
+
+# _table_row.html.erb
+<tr>
+  <%= td :name, object.name %>
+  <% td :description do %>
+    <%= textilize(object.description) %>
+  <% end %>
+</tr>
+
+# index.html.erb
+
+<%= table(@events, :class => "list", :ignore_columns => [:description]) %>
+
+
+
+Copyright (c) 2008 [Beamer Wilkins], released under the MIT license
