@@ -4,7 +4,7 @@ module ActionView
 
       def table(collection, options={})
         options[:skip_head] ||= false
-        folder_name = collection.first.class.name.downcase.pluralize
+        folder_name = collection.first.class.name.tableize.downcase.pluralize
         @ignore_columns = nil
         @ignore_columns ||= (options[:ignore_columns] ||= [])
         if collection.any?
